@@ -1,0 +1,9 @@
+.pagination-button {
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.page-link {
+    text-decoration: none;
+    color: black !important;
+}
