@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 export default function NavBar() {
+    const history = useHistory();
+    const location = useLocation();
+    
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light bg-dark">
                 <div className="container">
-                    <Link to='/' className="navbar-brand text-white">
+                    <Link to='/' onClick={() => { if (location.pathname === '/') history.go(0) } } className="navbar-brand text-white">
                         SUTDBOOK
                     </Link>
                     <div className="collapse navbar-collapse">
