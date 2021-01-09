@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Post from './news-feed/Post';
 import Pagination from 'react-js-pagination';
+import { useForm } from 'react-hook-form';
 import '../styles/Home.css';
-import { getAllPosts, getTags } from '../services/Post';
+import { getAllPosts, getTags, decideTagColor } from '../services/Post';
 
 export default function Home() {
     const [ loggedIn, setLoggedIn ] = useState(false);
@@ -10,13 +11,15 @@ export default function Home() {
     const [ tags, setTags ] = useState({});
     const [activePage, setActivePage] = useState(1);
     const [itemPerPage, setItemPerPage] = useState(3);
+    const { register, handleSubmit } = useForm();
 
     useEffect(() => {
         (async () => {
             try {
                 const response = await getAllPosts();
-                setPosts(response.data);
-                setTags(getTags(response.data));
+                const data = response.data.reverse(); // start from most recent
+                setPosts(data);
+                setTags(getTags(data));
             } catch(err) {}
         })();
         if (localStorage.getItem('account')) {
@@ -43,8 +46,7 @@ export default function Home() {
             <div className="container new-post">
                 { loggedIn ? 
                     <div className="row">
-                        <label for="newPostArea" className="mr-3 form-label">New Post</label>
-                        <textarea rows="3" cols="100" id="newPostArea" className="form-control" placeholder="What is on your mind ?"/>
+                        <textarea rows="3" cols="100" className="form-control" placeholder="What is on your mind ?"/>
                     </div>
                     :
                     <p>Sign In To Create New Post !</p>
@@ -52,10 +54,10 @@ export default function Home() {
             </div>
             { posts.length > 0 && 
                 <div>
-                    <div className="tags mt-4">
-                        <span className="mr-3 p-1 text-white bg-secondary">All ({posts.length})</span>
+                    <div className="tags mt-2">
+                        <span className="mr-3 mt-2 p-1 text-white bg-dark border border-dark">All ({posts.length})</span>
                         { Object.keys(tags).map((item, key) => {
-                            return <span key={key} className="mr-3 p-1 text-white bg-secondary">{item} ({tags[item].length})</span>
+                            return <span key={key} className={`mr-3 mt-2 pt-1 pb-1 pl-2 pr-2 border border-dark text-white ${decideTagColor(item)}`}>{item} ({tags[item].length})</span>
                         }) }
                     </div>
                     <div className="pagination-button mt-4">
