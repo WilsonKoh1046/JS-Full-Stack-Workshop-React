@@ -12,7 +12,7 @@ export default function Post({detail}) {
                     {detail.tag}
                 </span> 
             </p>   
-            <p>Author: {detail.name}</p>  
+            <p>OP: {detail.name}</p>  
             <p>{detail.content}</p>
         </div>
     );

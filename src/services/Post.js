@@ -9,6 +9,21 @@ export const getAllPosts = async () => {
     }
 }
 
+export const createNewPost = async (data) => {
+    data = attachUsername(data);
+    try {
+        const response = await axios.post('/posts', data);
+        return response;
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+const attachUsername = (data) => {
+    data.name = JSON.parse(localStorage.getItem('account')).name;
+    return data;
+}
+
 export const getTags = (posts) => {
     let output = {};
     for (let post of posts) {
@@ -31,6 +46,9 @@ export const decideTagColor = (tag) => {
             break;
         case 'Canteen':
             tagColor = 'bg-warning';
+            break;
+        case 'Fablab':
+            tagColor = 'bg-primary';
             break;
         case 'Freshmore':
             tagColor = 'bg-success';
