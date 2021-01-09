@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 export default function NavBar() {
+    const [ loggedIn, setLoggedIn ] = useState(false);
+    const [ username, setUsername ] = useState('');
     const history = useHistory();
     const location = useLocation();
+
+    useEffect(() => {
+        if (localStorage.getItem('account')) {
+            setLoggedIn(true);
+            setUsername(JSON.parse(localStorage.getItem('account')).name);
+        }
+    }, []);
     
     return (
         <>
@@ -17,9 +26,15 @@ export default function NavBar() {
                             <li className="nav-item">
                                 <Link to='/' className="nav-link text-white">Home</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to='/account' className="nav-link text-white">Account</Link>
-                            </li>
+                            { loggedIn ?
+                                <li className="nav-item">
+                                    <Link to='/account' className="nav-link text-white"><i className="fa far">&#xf007;</i> {username}</Link>
+                                </li>
+                                :
+                                <li className="nav-item">
+                                    <Link to='/account' className="nav-link text-white"><i className="fa far">&#xf007;</i> Account</Link>
+                                </li>
+                             }
                         </ul>
                     </div>
                 </div>

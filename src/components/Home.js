@@ -72,9 +72,9 @@ export default function Home() {
                                 <div className="ml-4">
                                     <label className="mr-2">Tag: </label>
                                     <select name="tag" ref={register}>
-                                        <option>Hostel</option>
-                                        <option>Marketplace</option>
                                         <option>Canteen</option>
+                                        <option>Marketplace</option>
+                                        <option>Hostel</option>
                                         <option>Fablab</option>
                                         <option>Food</option>
                                         <option>Freshmore</option>

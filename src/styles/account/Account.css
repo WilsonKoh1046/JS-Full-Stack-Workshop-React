@@ -1,0 +1,8 @@
+.user-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.user-detail {
+    text-align: left;
+}

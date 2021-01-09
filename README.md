@@ -1,3 +1,15 @@
+### JS-Full-Stack-Development-Workshop-React
+
+## Development
+```
+yarn install
+cd  ./server
+yarn install
+yarn dev
+```
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
