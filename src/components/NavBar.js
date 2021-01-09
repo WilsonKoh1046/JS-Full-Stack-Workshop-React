@@ -21,22 +21,20 @@ export default function NavBar() {
                     <Link to='/' onClick={() => { if (location.pathname === '/') history.go(0) } } className="navbar-brand text-white">
                         SUTDBOOK
                     </Link>
-                    <div className="collapse navbar-collapse">
-                        <ul className="navbar-nav">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link to='/' className="nav-link text-white">Home</Link>
+                        </li>
+                        { loggedIn ?
                             <li className="nav-item">
-                                <Link to='/' className="nav-link text-white">Home</Link>
+                                <Link to='/account' className="nav-link text-white"><i className="fa far">&#xf007;</i> {username}</Link>
                             </li>
-                            { loggedIn ?
-                                <li className="nav-item">
-                                    <Link to='/account' className="nav-link text-white"><i className="fa far">&#xf007;</i> {username}</Link>
-                                </li>
-                                :
-                                <li className="nav-item">
-                                    <Link to='/account' className="nav-link text-white"><i className="fa far">&#xf007;</i> Account</Link>
-                                </li>
-                             }
-                        </ul>
-                    </div>
+                            :
+                            <li className="nav-item">
+                                <Link to='/account' className="nav-link text-white"><i className="fa far">&#xf007;</i> Account</Link>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </nav>
         </>    

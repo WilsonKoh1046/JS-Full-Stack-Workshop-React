@@ -67,9 +67,9 @@ export default function Home() {
                     <form onSubmit={handleSubmit(submitNewPost)}>
                         <div>
                             <div className="row form-group">
-                                <span className="mr-2">Subject: </span>
+                                <span className="mt-2 mb-2 mr-2">Subject: </span>
                                 <input type="text" name="title" ref={register({ required: {value: true, message: "Must include post's subject"}})} />
-                                <div className="ml-4">
+                                <div className="mt-2 ml-2">
                                     <label className="mr-2">Tag: </label>
                                     <select name="tag" ref={register}>
                                         <option>Canteen</option>
