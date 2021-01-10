@@ -16,7 +16,7 @@ export default function NavBar() {
     
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark">
                 <div className="container">
                     <Link to='/' onClick={() => { if (location.pathname === '/') history.go(0) } } className="navbar-brand text-white">
                         SUTDBOOK
