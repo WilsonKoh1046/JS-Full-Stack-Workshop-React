@@ -5,6 +5,8 @@ import { createNewPost } from '../../services/Post';
 
 export default function NewPost() {
 
+    const tags = ['General', 'Canteen', 'Fablab', 'Marketplace', 'Hostel', 'Food', 'Freshmore', 'EPD', 'ESD', 'ISTD', 'ASD', 'PhD/Master', 'Fifth-Row']
+
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
 
@@ -29,16 +31,9 @@ export default function NewPost() {
                     <div className="mt-2 ml-2">
                         <label className="mr-2">Tag: </label>
                         <select name="tag" ref={register}>
-                            <option>Canteen</option>
-                            <option>Marketplace</option>
-                            <option>Hostel</option>
-                            <option>Fablab</option>
-                            <option>Food</option>
-                            <option>Freshmore</option>
-                            <option>EPD</option>
-                            <option>ESD</option>
-                            <option>ISTD</option>
-                            <option>ASD</option>
+                            { tags.map((item, key) => {
+                                return <option key={key}>{item}</option>
+                            }) }
                         </select>
                     </div> 
                 </div>

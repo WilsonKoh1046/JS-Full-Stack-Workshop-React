@@ -69,6 +69,15 @@ export const decideTagColor = (tag) => {
         case 'ASD':
             tagColor = 'bg-success';
             break;
+        case 'PhD/Master':
+            tagColor = 'bg-success';
+            break;
+        case 'General':
+            tagColor = 'bg-primary';
+            break;
+        case 'Fifth-Row':
+            tagColor = 'bg-success';
+            break;
         case 'Food':
             tagColor = 'bg-warning';
             break;
