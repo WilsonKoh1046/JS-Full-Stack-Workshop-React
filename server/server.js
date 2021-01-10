@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(Express.static(path.join(__dirname, "..", "build")));
 app.use(Express.static("public"));
 
+/*
 let posts = [
     {
         "name": "User 1",
@@ -72,6 +73,7 @@ let posts = [
         "tag": "Hostel"
     }
 ];
+*/
 
 let users = [
     {
@@ -101,9 +103,7 @@ let users = [
     }
 ];
 
-/*
 let posts = [];
-*/
 
 app.get('/', (req, res) => {
     res.send('server is alive');
@@ -114,12 +114,13 @@ app.get('/posts', (req, res) => {
 })
 
 app.post('/posts', (req, res) => {
-    const { name, title, content, tag } = req.body;
+    const { name, title, content, tag, date } = req.body;
     posts.push({
         'name': name,
         'title': title,
         'content': content,
-        'tag': tag
+        'tag': tag,
+        'date': date
     });
     res.status(201).json({ "Message": "Successfully created new post!" });
 })

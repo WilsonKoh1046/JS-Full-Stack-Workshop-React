@@ -14,6 +14,7 @@ export default function Post({detail}) {
             </p>   
             <p>OP: {detail.name}</p>  
             <p>{detail.content}</p>
+            <p>{detail.date}</p>
         </div>
     );
 }

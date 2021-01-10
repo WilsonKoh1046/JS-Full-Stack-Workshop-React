@@ -10,7 +10,8 @@ export const getAllPosts = async () => {
 }
 
 export const createNewPost = async (data) => {
-    data = attachUsername(data);
+    attachUsername(data);
+    addCreateDate(data);
     try {
         const response = await axios.post('/posts', data);
         return response;
@@ -21,7 +22,10 @@ export const createNewPost = async (data) => {
 
 const attachUsername = (data) => {
     data.name = JSON.parse(localStorage.getItem('account')).name;
-    return data;
+}
+
+const addCreateDate = (data) => {
+    data.date = new Date().toLocaleString();
 }
 
 export const getTags = (posts) => {
