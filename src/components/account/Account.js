@@ -46,8 +46,10 @@ export default function Account() {
     const userSignUp = async (data) => {
         try {
             const response = await signUp(data);
-            history.go(0);
-            setCreateNewAccount(false);
+            if (response.status === 201) {
+                setCreateNewAccount(false);
+                history.go(0);
+            } 
         } catch(err) {
             alert("Sign up failed, please try again");
             console.log(err);
