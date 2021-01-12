@@ -10,8 +10,10 @@ export default function SignIn() {
     const userSignIn = async (data) => {
         try {
             const response = await signIn(data);
-            localStorage.setItem('account', JSON.stringify(response.data));
-            history.push('/');
+            if (response.status === 200) {
+                localStorage.setItem('account', JSON.stringify(response.data));
+                history.push('/');
+            }
         } catch(err) {
             alert("Sign in failed, please try again");
             console.log(err);
