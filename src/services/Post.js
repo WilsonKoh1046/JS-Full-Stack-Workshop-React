@@ -81,9 +81,6 @@ export const decideTagColor = (tag) => {
         case 'Food':
             tagColor = 'bg-warning';
             break;
-        default:
-            tagColor = 'bg-dark';
-            break;
     }
     return tagColor;
 }
